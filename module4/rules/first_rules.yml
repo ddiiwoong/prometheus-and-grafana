@@ -1,0 +1,5 @@
+groups:
+- name: my_recording_rule
+  rules:
+  - record: my_custom_metric
+    expr: prometheus_http_requests_total{handler="/api/v1/query"}

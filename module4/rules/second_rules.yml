@@ -1,0 +1,6 @@
+groups:
+- interval: 60s
+  name: example_recording_rules
+  rules:
+  - expr: 100 - 100 * ( node_filesystem_free_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"} )
+    record: node_exporter:node_filesystem_free:fs_used_percents
