@@ -109,5 +109,7 @@ docker run -it -d -p 9090:9090 \
     prom/prometheus
 ```
 
+`nginx_connections_active`을 포함한 nginx 관련 메트릭을 확인할 수 있다.  
 
+![metric_nginx](./metric-nginx.png)
 
