@@ -10,7 +10,8 @@ docker run -d -p 9091:9091 prom/pushgateway
 ## prometheus scrape config
 
 prometheus.yml에 nginx target을 추가한다.  
-`honor_labels: true`는 
+`honor_labels: true`는 Pushgateway가 expose하는 모든 레이블을 보존하려는 경우에 사용한다.
+
 ```
   - job_name: pushgateway
     honor_labels: true
@@ -39,7 +40,7 @@ echo "pi_metric 3.14" | curl --data-binary @- http://localhost:9091/metrics/job/
 ```
 
 
-{job="some_job",instance="some_instance"} label을 가지는 counter와 gauge를 push 합니다.
+{job="some_job",instance="some_instance"} label을 가지는 counter와 gauge를 push 한다. 
 
 ```
 cat <<EOF | curl --data-binary @- http://localhost:9091/metrics/job/some_job/instance/some_instance
@@ -52,7 +53,7 @@ pulse 89
 EOF
 ```
 
-Push metric을 확인합니다.
+Push metric을 확인할수 있다.
 
 ```
 curl http://localhost:9091/metrics
