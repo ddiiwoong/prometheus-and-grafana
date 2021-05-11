@@ -1,0 +1,20 @@
+groups:
+- name: redis
+  rules:
+  - alert: RedisDown
+    annotations:
+      description: Whatever
+      summary: Redis instance down
+    expr: redis_up{} == 0
+    for: 2m
+    labels:
+      severity: critical
+- name: node
+  rules:
+  - alert: nodedown
+    expr: up{job="node"} == 0
+  labels:
+    severity: critical
+  annotations:
+    summary: node down
+    
