@@ -4,6 +4,7 @@ global:
   smtp_auth_username: 'alertmanager'
   smtp_auth_password: 'password'
   resolve_timeout: 5m
+  slack_api_url: 'https://hooks.slack.com/services/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'
 
 templates:
 - '/etc/alertmanager/template/*.tmpl'
