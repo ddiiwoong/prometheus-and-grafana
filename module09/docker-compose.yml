@@ -4,6 +4,7 @@ services:
     image: quay.io/prometheus/prometheus:v2.26.0
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./consoles:/usr/share/prometheus/consoles
     command: 
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
