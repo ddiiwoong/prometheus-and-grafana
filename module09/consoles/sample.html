@@ -1,5 +1,19 @@
 {{template "head" .}}
 {{template "prom_content_head" .}}
-
+<tr>
+  <th>node_cpu_seconds_total</th>
+  <th>{{ template "prom_query_drilldown" (args "node_cpu_seconds_total") }}
+  </th>
+</tr>
+<h3>Requests</h3>
+<div id="queryGraph"></div>
+<script>
+  new PromConsole.Graph({
+    node: document.querySelector("#queryGraph"),
+    expr: "rate(prometheus_http_requests_total[1m])",
+    yUnits: "/s",
+    yTitle: "Requests"
+  })
+</script>
 {{template "prom_content_tail" .}}
 {{template "tail"}}
