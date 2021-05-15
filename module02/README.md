@@ -1,4 +1,4 @@
-# Module01 - Prometheus 구성  
+# Module02 - Prometheus 구성  
 
 Prometheus 서버에는 메트릭 액세스 빈도와 함께 스크랩할 엔드포인트를 정의하는 configuration 파일이 필요하다.  
 
@@ -26,7 +26,7 @@ scrape_configs:
           group: 'prometheus'
   - job_name: node
     static_configs:
-    - targets: ['exporter:9100']
+    - targets: ['node-exporter:9100']
 ```
 
 ### docker-compose로 실행
@@ -43,7 +43,7 @@ docker run -it -d -p 9090:9090 \
 ```
 
 
-## MacOS 환경
+## macOS 환경
 macOS 용 Docker에서는 네트워크를 포함한 여러가지 제약사항이 존재하므로 node_exporter를 binary형태로 실행한다.
 
 [https://github.com/prometheus/node_exporter/issues/610](https://github.com/prometheus/node_exporter/issues/610)
@@ -79,4 +79,9 @@ docker run -it -d -p 9090:9090 \
     -v $PWD/prometheus.yml:/etc/prometheus/prometheus.yml \
     --name prometheus-server \
     prom/prometheus
+```
+
+### docker-compose로 실행
+```sh
+docker-compose up -d
 ```
