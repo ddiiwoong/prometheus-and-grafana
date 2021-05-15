@@ -14,18 +14,3 @@ services:
     image: prom/node-exporter:latest
     ports:
       - "9100:9100"
-
-  grafana:
-    image: grafana/grafana
-    ports:
-      - "3000:3000"
-    depends_on:
-      - prometheus
-
-  alertmanager:
-    image: prom/alertmanager:v0.21.0
-    ports:
-      - 9093:9093
-    volumes:
-      - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
-    restart: always

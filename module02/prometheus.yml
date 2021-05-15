@@ -10,4 +10,4 @@ scrape_configs:
           group: 'prometheus'
   - job_name: node
     static_configs:
-    - targets: ['exporter:9100']
+    - targets: ['node-exporter:9100']
