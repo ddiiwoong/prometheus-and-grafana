@@ -1,4 +1,6 @@
-# Client Libraries
+# Module04-2 Client Libraries
+
+## Python Client Library
 
 Python 클라이언트 라이브러리 : https://github.com/prometheus/client_python
 
@@ -60,3 +62,7 @@ prometheus.yml에 python client target을 추가한다.
     static_configs:
     - targets: ['host.docker.internal:8000']
 ```
+
+## Golang Client Library
+
+
