@@ -22,11 +22,11 @@ services:
   
   python-sample:
     image: ddiiwoong/flask-prometheus
-    port:
+    ports:
       - "8888:8888"
       - "8000:8000"
   
   golang-sample:
     image: ddiiwoong/gomux-prometheus
-    port:
+    ports:
       - "9001:9001"
