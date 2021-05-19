@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  prometheus:
+    image: quay.io/prometheus/prometheus:v2.26.0
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command: "--config.file=/etc/prometheus/prometheus.yml --storage.tsdb.path=/prometheus"
+    ports:
+      - 9090:9090
+    depends_on:
+      - node-exporter
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    ports:
+      - "9100:9100"
+
+  pushgateway:
+    image: prom/pushgateway
+    ports:
+      - "9091:9091"
+  
+  python-sample:
+    image: ddiiwoong/flask-prometheus
+    ports:
+      - "8888:8888"
+      - "8000:8000"
+  
+  golang-sample:
+    image: ddiiwoong/gomux-prometheus
+    ports:
+      - "9001:9001"

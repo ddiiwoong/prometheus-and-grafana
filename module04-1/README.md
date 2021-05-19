@@ -1,6 +1,6 @@
-# Module04-1 Data Collection
+# Module04-1
 
-## Exporter
+## Nginx Exporter
 
 ### nginx stub_stauts
 
@@ -178,3 +178,4 @@ pulse{instance="some_instance",job="some_job"} 89
 ...
 steps{instance="some_instance",job="some_job",label="applewatch"} 4340
 ```
+
