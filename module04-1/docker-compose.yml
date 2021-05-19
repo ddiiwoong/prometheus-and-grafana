@@ -19,3 +19,8 @@ services:
     image: prom/pushgateway
     ports:
       - "9091:9091"
+
+  nginx-demo:
+    image: ddiiwoong/nginx-hello-stub
+    ports:
+      - "8080:8080"
