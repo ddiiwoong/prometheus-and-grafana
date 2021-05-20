@@ -1,4 +1,4 @@
-FROM golang:1.16.0
+FROM golang:1.16.0 as builder
 
 # Set the Current Working Directory inside the container
 WORKDIR /app
@@ -14,7 +14,10 @@ RUN go mod download
 COPY . .
 
 # Build the application
-RUN go build -o main .
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags '-s -w' -o main .
+
+FROM scratch
+COPY --from=builder /app /
 
 # Expose port 9001 to the outside world
 EXPOSE 9001
