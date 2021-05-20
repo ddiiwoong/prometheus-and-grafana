@@ -9,7 +9,8 @@ app = Flask('python-library-test')
 c = Counter('flask_requests', 'Number of requests served, by http code', ['http_code'])
 g = Gauge('flask_rate_requests', 'Rate of success requests')
 s = Summary('flask_request_process_time', 'Time spent processing a request')
-h = Histogram('flask_histogram', 'Sample histogram')
+h = Histogram('flask_request_latency_seconds', 'Description of histogram')
+
 
 responce_500 = 0
 responce_200 = 0
@@ -22,18 +23,20 @@ def hello():
     global responce_200
     global rate_responce
     if randrange(1, 100) > int(success_rate):
+        start = time.time()
         c.labels(http_code='500').inc()
         responce_500 = responce_500 + 1
         rate_responce = responce_500 / (responce_500+responce_200) * 100
         g.set(rate_responce)
-        h.observe(random() * 10)
+        h.observe((time.time() - start)*1000)
         return "Internal Server Error\\n", 500
     else:
+        start = time.time()
         c.labels(http_code='200').inc()
         responce_200 = responce_200 + 1
         rate_responce = responce_500 / (responce_500+responce_200) * 100
         g.set(rate_responce)
-        h.observe(random() * 10)
+        h.observe((time.time() - start)*1000)
         return "Hello World!\\n"
 start_http_server(8000)
 app.run(host = '0.0.0.0', port = 8888)
