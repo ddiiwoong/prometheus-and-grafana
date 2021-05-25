@@ -29,5 +29,4 @@ services:
       - 9093:9093
     volumes:
       - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
-    command: "--web.enable-lifecycle"
     restart: always
