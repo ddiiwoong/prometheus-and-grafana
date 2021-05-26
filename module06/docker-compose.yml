@@ -30,6 +30,12 @@ services:
     depends_on:
       - prometheus
   
+  python-sample:
+    image: ddiiwoong/flask-prometheus
+    ports:
+      - "8888:8888"
+      - "8000:8000"
+
   zookeeper:
     image: wurstmeister/zookeeper
     ports:
