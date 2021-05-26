@@ -1,6 +1,6 @@
 global:
   resolve_timeout: 5m
-  slack_api_url: 'https://hooks.slack.com/services/TC3DP3HPG/B022DMEH24Q/PXAxkHllxzPn8h'
+  slack_api_url: 'https://hooks.slack.com/services/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8h'
 
 templates:
 - '/etc/alertmanager/template/*.tmpl'
@@ -32,7 +32,7 @@ receivers:
 - name: 'webhook'
   webhook_configs:
   - url: 'http://127.0.0.1:5000/webhook'
-# - name: 'slack-notification'
-#   slack_configs:
-#   - channel: '#notification'
-#     send_resolved: false
+- name: 'slack-notification'
+  slack_configs:
+  - channel: '#notification'
+    send_resolved: false
