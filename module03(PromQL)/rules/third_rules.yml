@@ -1,6 +1,6 @@
 groups:
 - name: cpu_usage
-  interval: 15s
+  interval: 30s
   rules:
-  - record: server:cpu_usage
+  - record: server:cpu_usage_status
     expr: sum(rate(node_cpu_seconds_total{job="node",mode!="idle"}[5m])) * 100 / 8
